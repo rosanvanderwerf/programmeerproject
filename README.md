@@ -1,7 +1,7 @@
 # project
 Rosan van der Werf
 
-\* short summary *
+Short summary: Problem statement, solution, visual sketch, list of main features, prerequisites, data sources, external components, review similar app, hardest parts.
 
 ## Problem statement
 This application helps users to enrich their vocabulary. There are people that have difficulty communicating in English. This could be because English isn't their first language. The application can be used by people that want to learn and understand the English language by means of a dictionary-like concept and a network visualization. It can also be of used for people writing articles, searching for the right words or synonyms. 
@@ -16,7 +16,9 @@ With the application the user can find definitions, synonyms, antonyms and assoc
 1. Wordlist
 1. Settings/Help/About *
 
-![](doc/sketch.png)
+![](untitled_page.png)
+
+On the Start screen (1) the user sees a search bar, the wordt of the day and a list of recent or popular words. When the users inputs a word in the search bar, a new activity begins that shows the result of the query (2). There, all the details of the word are displayed. Per: noun, verb, adjective and proverb the different definitions are given together with example sentences. Also: The syllables and associations. Under the association is a button that says 'show network'. When the user clicks this another activity appears with a network of all the associations (3), and the relation with each other and the initial word. The user can also click the + button to add the word to a specified list. When the 'lists' icon is clicked, the user is send to the lists activity (4). Where it is possible to see the existing list en their contents (5). New lists can be added using the + button. 
 
 ### list of main features
 Starting from the homescreen:
@@ -48,7 +50,7 @@ Features marked with * are optional.
 
 These two APIs are used to generate the results of a search query. The APIs return their requests in JSON, a 'read' function is needed to extract specific data.
 
-### External compontent
+### External components
 Firebase is used to regulate the user interactions and the like. Model objects like wordlists can be saved, adjusted or deleted. 
 
 ### Review of similar app: WordWeb
