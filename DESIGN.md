@@ -5,7 +5,8 @@ Advanced sketches, diagram of utility modules, classes and functions, list of AP
 ## Advanced sketches of UI
 Er kan grofweg een tweedelige scheiding worden gemaakt in de functionaliteiten van de applicatie. De eerste is het zoeken en inzien van woorden. De tweede is het opslaan van woordenlijsten.
 
-![](advanced.png)
+![](foto1.png)
+![](foto2.png)
 
 \* vanwege opladerproblemen van mijn laptop heb ik maar weinig op de computer kunnen werken. Vandaar dat deze foto's zijn gebruikt voor het weergeven van de sketches. Ik ga deze zsm digitaliseren, maar het kan daarom zijn dat de digitale versie pas later te zien is.
 
@@ -29,8 +30,7 @@ Rechtsboven de ListsActivity zijn drie punten te zien ... die indiceren dat er o
 
 ## Diagram of utility modules, classes and functions
 
-![](foto1.png)
-![](foto2.png)
+![](diagram.png)
 
 Er zijn 6 classes waarvan er drie subclasses zijn: ```wordDetails``` is een subclass van ```Word```, ```Association``` van ```Association``` en ```List``` van ```Lists```
 Deze subclasses dragen bij aan het opslaan van verschillende soorten objecten in de applicatie: woorden, associatie(s/netwerken) en lijsten. Getters en setters worden gebruikt om specifieke data te extraheren voor wanneer bijvoorbeeld de ResultActivity opgevuld worden, of voor wanneer de gebruiker een lijstnaam toevoegd.
