@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">project</string>
+    <string name="search">search...</string>
+    <string name="create_new_list">Create new list</string>
+    <string name="explanation_add_list">Please give your new list a name:</string>
+    <string name="hint_list_name">listname...</string>
+    <string name="cancel_add_list">cancel</string>
+    <string name="add_add_list">add</string>
+    <string name="to_network">to network</string>
+    <string name="about_explanation_content">This application can be used as a handy portable dictionary. Its features consists of: searching words, seeing details about the searched words, a network of the associations of a word (graphic visualization), the possibility to save words in lists. Contact: rknvdw@gmail.com</string>
+    <string name="about_explanation_title">About this application</string>
 </resources>
