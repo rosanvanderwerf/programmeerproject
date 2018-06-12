@@ -9,4 +9,6 @@
     <string name="to_network">to network</string>
     <string name="about_explanation_content">This application can be used as a handy portable dictionary. Its features consists of: searching words, seeing details about the searched words, a network of the associations of a word (graphic visualization), the possibility to save words in lists. Contact: rknvdw@gmail.com</string>
     <string name="about_explanation_title">About this application</string>
+    <string name="url_p1"><![CDATA[https://api.wordassociations.net/associations/v1.0/json/search?apikey=b5787245–7478–4ff6-95ca-bb421177f353&text=]]></string>
+    <string name="ulr_p2"><![CDATA[&lang=en]]></string>
 </resources>

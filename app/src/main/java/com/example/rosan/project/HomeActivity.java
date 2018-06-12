@@ -52,10 +52,12 @@ public class HomeActivity extends AppCompatActivity {
         switch (keyCode) {
             case KeyEvent.KEYCODE_ENTER:
                 // start new intent
-                Toast.makeText(this, "enter is pressed", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(this, "enter is pressed", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(this, ResultActivity.class);
                 EditText input = findViewById(R.id.query);
                 String query = input.getText().toString();
+
+                Toast.makeText(this, query, Toast.LENGTH_SHORT).show();
                 intent.putExtra("query",query);
                 startActivity(intent);
                 return true;
