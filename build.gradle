@@ -8,7 +8,7 @@ buildscript {
         maven {
             url 'repo1.maven.org/maven2';
         }
-
+        mavenCentral()
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:3.1.3'

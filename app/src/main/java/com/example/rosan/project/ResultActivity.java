@@ -12,6 +12,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.mashape.unirest.http.exceptions.UnirestException;
 import com.rapidapi.rapidconnect.Argument;
 import com.rapidapi.rapidconnect.RapidApiConnect;
 
@@ -40,12 +41,29 @@ public class ResultActivity extends AppCompatActivity implements View.OnClickLis
                 "36b10b0d-0517-4169-89e1-3286c71126dd");
 
         // Put 'em in a Map
-        Map<String, Argument> body = new HashMap<String,Argument>();
-        body.put("pk1", new Argument("data", "pv1"));
+//        Map<String, Argument> body = new HashMap<String, Argument>();
+//        try {
+//            Map<String, Object> response = connect.call("NasaAPI", "getPictureOfTheDay", body);
+//            Toast.makeText(this, response.toString(), Toast.LENGTH_SHORT).show();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
 
-        // Request
-        AssociationsRequest request = new AssociationsRequest(this);
-        request.getAssociations(this,query);
+        // Word request
+        WordRequest de_request = new WordRequest(this);
+        try {
+            de_request.getWord(this,query);
+        } catch (UnirestException e) {
+            e.printStackTrace();
+        }
+
+
+        // Associations Request
+        AssociationsRequest as_request = new AssociationsRequest(this);
+        as_request.getAssociations(this,query);
+
+
+
 
 
 

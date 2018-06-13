@@ -30,7 +30,8 @@ public class AssociationsRequest implements Response.Listener<JSONObject> , Resp
         /* Retrieve associations from API, if zo: notify activity */
         RequestQueue queue = Volley.newRequestQueue((Context) activity);
 
-        String url = context.getString(R.string.url_p1)+ query +context.getString(R.string.ulr_p2);
+        //String url = context.getString(R.string.as_url_p1)+ query +context.getString(R.string.as_ulr_p2);
+        String url = "https://api.wordassociations.net/associations/v1.0/json/search?apikey=b5787245-7478-4ff6-95ca-bb421177f353&text="+ query+"&lang=en";
         JsonObjectRequest request = new JsonObjectRequest(url, null, this, this);
         queue.add(request);
 
