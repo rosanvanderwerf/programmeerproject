@@ -2,11 +2,11 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:title="BMs"
-        android:id="@+id/saved"
+        android:title="back"
+        android:id="@+id/back"
         app:showAsAction="ifRoom"/>
     <item
-        android:title="Alphebetical"
+        android:title="Alphabetical"
         android:id="@+id/alphabet"
         app:showAsAction="never"/>
 

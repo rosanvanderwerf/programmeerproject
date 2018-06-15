@@ -1,5 +1,6 @@
 package com.example.rosan.project;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -11,8 +12,8 @@ public class ListDatabase extends SQLiteOpenHelper {
 
     private static final String KEY_ID = "_id";
     private static final String KEY_TIMESTAMP = "timestamp";
-    private static final String KEY_LISTNAME = "listname";
-    private static final String KEY_WORDS = "words";
+    private static final String KEY_LISTNAME = "list_name";
+    //private static final String KEY_WORDS = "words";
 
     private static final String TABLE = "ListTable";
     private static ListDatabase instance = null;
@@ -33,8 +34,7 @@ public class ListDatabase extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         String CREATE_DB = "CREATE TABLE " + TABLE + "(" + KEY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
-                + KEY_LISTNAME + " TEXT NOT NULL, " + KEY_WORDS + " TEXT NOT NULL, "
-                + KEY_TIMESTAMP + "DATETIME DEFAULT CURRENT_TIMESTAMP);";
+                + KEY_LISTNAME + " TEXT NOT NULL, " + KEY_TIMESTAMP + "DATETIME DEFAULT CURRENT_TIMESTAMP);";
         sqLiteDatabase.execSQL(CREATE_DB);
     }
 
@@ -49,28 +49,40 @@ public class ListDatabase extends SQLiteOpenHelper {
         SQLiteDatabase db = getWritableDatabase();
         String query = "SELECT * FROM " + TABLE;
         Cursor cursor = db.rawQuery(query,null);
-        db.close();
         return cursor;
     }
 
-    // insert new list (in OverviewActivity)
-    /*
-    * public void insert(JournalEntry entry){
-        SQLiteDatabase sqLiteDatabase = getWritableDatabase();
-        ContentValues values = new ContentValues();
-        values.put(KEY_TITLE, entry.getTitle());
-        values.put(KEY_CONTENT, entry.getContent());
-        values.put(KEY_MOOD, entry.getMood());
-        sqLiteDatabase.insert(TABLE,null,values);
-        sqLiteDatabase.close();
+    public Cursor selectAllAlph(){
+        SQLiteDatabase db = getWritableDatabase();
+        String query = "SELECT * FROM " + TABLE + " ORDER BY " + KEY_LISTNAME;
+        Cursor cursor = db.rawQuery(query,null);
+        return cursor;
     }
 
+    public Cursor selectAllDate(){
+        SQLiteDatabase db = getWritableDatabase();
+        String query = "SELECT * FROM " + TABLE + " ORDER BY " + KEY_TIMESTAMP;
+        Cursor cursor = db.rawQuery(query,null);
+        return cursor;
+    }
+
+
+    // insert new list (in OverviewActivity)
+    public void insert(List list){
+        SQLiteDatabase db = getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(KEY_LISTNAME, list.getListname());
+
+        // words is saved as String, later on it will be converted (back) to an ArrayList
+        //values.put(KEY_WORDS, list.getWords());
+        db.insert(TABLE,null,values);
+        db.close();
+    }
+
+    // delete list (in OverviewActivity)
     public void delete(long id){
-        SQLiteDatabase sqLiteDatabase = getWritableDatabase();
-        sqLiteDatabase.delete(TABLE,KEY_ID + "=" + id,null);
-        sqLiteDatabase.close();
-    } */
-
-
-
+        SQLiteDatabase db = getWritableDatabase();
+        db.delete(TABLE,KEY_ID + "=" + id, null);
+        db.close();
+    }
 }

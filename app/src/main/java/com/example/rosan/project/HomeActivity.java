@@ -7,7 +7,6 @@ import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.EditText;
-import android.widget.Toast;
 
 public class HomeActivity extends AppCompatActivity {
 
@@ -57,7 +56,6 @@ public class HomeActivity extends AppCompatActivity {
                 EditText input = findViewById(R.id.query);
                 String query = input.getText().toString();
 
-                Toast.makeText(this, query, Toast.LENGTH_SHORT).show();
                 intent.putExtra("query",query);
                 startActivity(intent);
                 return true;

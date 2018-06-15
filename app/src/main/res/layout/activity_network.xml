@@ -2,13 +2,26 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+
     android:paddingLeft="16dp"
     android:paddingRight="16dp"
-    android:orientation="vertical" >
+    android:orientation="vertical">
 
     <TextView
         android:id="@+id/network_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
+
+
+    <giwi.org.networkgraph.GraphSurfaceView
+        android:id="@+id/network"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:nodeBgColor="@android:color/white"
+        app:defaultColor="@android:color/black"
+        app:edgeColor="@android:color/holo_blue_light"
+        app:nodeColor="@android:color/holo_blue_light"
+        android:layout_margin="10dp"/>
 
 </LinearLayout>

@@ -61,7 +61,7 @@ public class AssociationsRequest implements Response.Listener<JSONObject> , Resp
             }
 
             if(associations.isEmpty()){
-                cb.gotError("failes to extract associations");
+                cb.gotError("failed to extract associations");
             } else {
                 cb.gotAssociations(associations);
             }

@@ -40,22 +40,9 @@ public class ResultActivity extends AppCompatActivity implements View.OnClickLis
         RapidApiConnect connect = new RapidApiConnect("default-application_5b100586e4b091d6b3344045",
                 "36b10b0d-0517-4169-89e1-3286c71126dd");
 
-        // Put 'em in a Map
-//        Map<String, Argument> body = new HashMap<String, Argument>();
-//        try {
-//            Map<String, Object> response = connect.call("NasaAPI", "getPictureOfTheDay", body);
-//            Toast.makeText(this, response.toString(), Toast.LENGTH_SHORT).show();
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-
         // Word request
         WordRequest de_request = new WordRequest(this);
-        try {
-            de_request.getWord(this,query);
-        } catch (UnirestException e) {
-            e.printStackTrace();
-        }
+        de_request.getWord(this, query);
 
 
         // Associations Request
@@ -63,17 +50,11 @@ public class ResultActivity extends AppCompatActivity implements View.OnClickLis
         as_request.getAssociations(this,query);
 
 
-
-
-
-
         Button button = findViewById(R.id.to_network);
         button.setOnClickListener(this);
 
         TextView title = findViewById(R.id.title);
         title.setText(query);
-
-
     }
 
     @Override
@@ -116,6 +97,8 @@ public class ResultActivity extends AppCompatActivity implements View.OnClickLis
         TextView response = findViewById(R.id.response);
         response.setText(associations.toString());
     }
+
+
 
     @Override
     public void gotError(String message) {

@@ -5,7 +5,7 @@
     <string name="explanation_add_list">Please give your new list a name:</string>
     <string name="hint_list_name">listname...</string>
     <string name="cancel_add_list">cancel</string>
-    <string name="add_add_list">add</string>
+    <string name="add_add_list">confirm</string>
     <string name="to_network">to network</string>
     <string name="about_explanation_content">This application can be used as a handy portable dictionary. Its features consists of: searching words, seeing details about the searched words, a network of the associations of a word (graphic visualization), the possibility to save words in lists. Contact: rknvdw@gmail.com</string>
     <string name="about_explanation_title">About this application</string>
@@ -13,4 +13,8 @@
     <string name="as_ulr_p2"><![CDATA[&lang=en]]></string>
     <string name="de_url_p1">https://api.wordnik.com/v4/word.json/</string>
     <string name="de_url_p2"><![CDATA[/definitions?limit=200&partOfSpeech=noun&includeRelated=false&sourceDictionaries=all&useCanonical=false&includeTags=false&api_key=]]></string>
+    <string name="cancel_delete_list">cancel</string>
+    <string name="delete_delete_list">confirm</string>
+    <string name="delete_this_list">Delete this list</string>
+    <string name="explanation_delete_list">Are you sure you want to delete this list? All content will be irreversibly gone.</string>
 </resources>
