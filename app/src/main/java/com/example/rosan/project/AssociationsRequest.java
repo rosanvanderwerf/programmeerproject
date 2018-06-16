@@ -40,11 +40,6 @@ public class AssociationsRequest implements Response.Listener<JSONObject> , Resp
     }
 
     @Override
-    public void onErrorResponse(VolleyError error) {
-        cb.gotError("failed to extract associations");
-    }
-
-    @Override
     public void onResponse(JSONObject response) {
         try {
             JSONArray as_res = response.getJSONArray("response");
@@ -68,5 +63,10 @@ public class AssociationsRequest implements Response.Listener<JSONObject> , Resp
         } catch (JSONException e) {
             e.printStackTrace();
         }
+    }
+
+    @Override
+    public void onErrorResponse(VolleyError error) {
+        cb.gotError("failed to extract associations");
     }
 }

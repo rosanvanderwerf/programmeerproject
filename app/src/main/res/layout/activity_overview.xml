@@ -7,7 +7,7 @@
     android:paddingLeft="16dp"
     android:paddingRight="16dp"
     android:orientation="vertical">
-<!--
+
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -30,7 +30,7 @@
             android:text="Date" />
 
     </LinearLayout>
--->
+
     <!-- Frame layout to let the FAB be a FABULOUS FAB -->
     <FrameLayout
         android:layout_width="match_parent"

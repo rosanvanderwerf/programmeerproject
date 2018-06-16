@@ -19,15 +19,13 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 public class WordRequest implements Response.Listener<JSONObject>, Response.ErrorListener{
 
-
+    public Context context;
+    public AssociationsRequest.Callback cb;
 
     public interface Callback {
         void gotWordDetails(ArrayList<String> associations);
         void gotError(String message);
     }
-
-    public Context context;
-    public AssociationsRequest.Callback cb;
 
     /* Constructor */
     WordRequest(Context c){
@@ -38,8 +36,7 @@ public class WordRequest implements Response.Listener<JSONObject>, Response.Erro
     public void getWord(AssociationsRequest.Callback activity, String query){
         RequestQueue queue = Volley.newRequestQueue((Context) activity);
 
-        String word_key = "15f5aecd00aed7acd70060d1fe20b9eab2f7787e3128cb25a";
-
+        //String word_key = "15f5aecd00aed7acd70060d1fe20b9eab2f7787e3128cb25a";
         /* Get word partOfSpeech, text */
         String url = "https://api.wordnik.com/v4/word.json/house/definitions?limit=200&partOfSpeech=noun&includeRelated=false&sourceDictionaries=all&useCanonical=false&includeTags=false&api_key=15f5aecd00aed7acd70060d1fe20b9eab2f7787e3128cb25a";//"https://api.wordnik.com/v4/word.json/" + query + "/definitions?limit=200&partOfSpeech=noun&includeRelated=false&sourceDictionaries=all&useCanonical=false&includeTags=false&api_key=" + word_key;
         JsonObjectRequest request_definitions = new JsonObjectRequest(url, null, this, this);

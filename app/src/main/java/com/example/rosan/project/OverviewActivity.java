@@ -5,6 +5,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -17,13 +18,14 @@ import android.widget.Toast;
 
 /* TO DO
 * When to other activity: save sort-preferences
-*
+* 'Enter' in dialog also adds list to DB
 * */
 
 public class OverviewActivity extends AppCompatActivity implements View.OnClickListener {
 
     ListDatabase db;
     ListView lists;
+    EditText list_name;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -117,7 +119,7 @@ public class OverviewActivity extends AppCompatActivity implements View.OnClickL
         final AlertDialog dialog = builder.create();
 
         // Define views
-        final EditText list_name = view.findViewById(R.id.list_name);
+        list_name = view.findViewById(R.id.list_name);
         Button cancel = view.findViewById(R.id.cancel);
         Button add = view.findViewById(R.id.add);
 
@@ -129,6 +131,8 @@ public class OverviewActivity extends AppCompatActivity implements View.OnClickL
                 dialog.dismiss();
             }
         });
+
+
 
         // add button is clicked
         add.setOnClickListener(new View.OnClickListener() {

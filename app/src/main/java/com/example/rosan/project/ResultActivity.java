@@ -102,6 +102,6 @@ public class ResultActivity extends AppCompatActivity implements View.OnClickLis
 
     @Override
     public void gotError(String message) {
-        Log.d("request error",message);
+        Log.d("as_request error",message);
     }
 }
