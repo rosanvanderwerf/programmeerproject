@@ -23,7 +23,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class ResultActivity extends AppCompatActivity implements View.OnClickListener, AssociationsRequest.Callback {
+public class ResultActivity extends AppCompatActivity implements View.OnClickListener,  WordRequest.Callback, AssociationsRequest.Callback {
 
     String query;
 
@@ -37,8 +37,8 @@ public class ResultActivity extends AppCompatActivity implements View.OnClickLis
         query = intent.getStringExtra("query");
 
         // Use this query to do a request
-        RapidApiConnect connect = new RapidApiConnect("default-application_5b100586e4b091d6b3344045",
-                "36b10b0d-0517-4169-89e1-3286c71126dd");
+        //RapidApiConnect connect = new RapidApiConnect("default-application_5b100586e4b091d6b3344045",
+                //"36b10b0d-0517-4169-89e1-3286c71126dd");
 
         // Word request
         WordRequest de_request = new WordRequest(this);
@@ -57,33 +57,35 @@ public class ResultActivity extends AppCompatActivity implements View.OnClickLis
         title.setText(query);
     }
 
+
+    /* Underneath: handling requests */
+
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the main_menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main_menu, menu);
-        return true;
+    public void gotAssociations(ArrayList<String> associations) {
+        TextView response = findViewById(R.id.response);
+        response.setText(associations.toString());
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-
-        switch(item.getItemId()) {
-            case R.id.saved:
-                //Toast.makeText(this, "item1", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(this, OverviewActivity.class);
-                startActivity(intent);
-                break;
-            case R.id.about:
-                Toast.makeText(this, "item2", Toast.LENGTH_SHORT).show();
-                break;
-            case R.id.settings:
-                Toast.makeText(this, "item2", Toast.LENGTH_SHORT).show();
-                break;
-            default:
-                return super.onOptionsItemSelected(item);
-        }
-        return true;
+    public void gotAssociationsError(String message) {
+        Log.d("as_request error",message);
     }
+
+
+    @Override
+    public void gotWordDetails(Word word) {
+        // Fill views with content of Word
+        Toast.makeText(this, word.toString(), Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void gotWordError(String message) {
+
+    }
+
+
+
+
 
     @Override
     public void onClick(View v) {
@@ -93,15 +95,32 @@ public class ResultActivity extends AppCompatActivity implements View.OnClickLis
     }
 
     @Override
-    public void gotAssociations(ArrayList<String> associations) {
-        TextView response = findViewById(R.id.response);
-        response.setText(associations.toString());
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the main_menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.main_menu, menu);
+        return true;
     }
 
-
-
     @Override
-    public void gotError(String message) {
-        Log.d("as_request error",message);
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch(item.getItemId()) {
+            case R.id.saved:
+
+                //Toast.makeText(this, "item1", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(this, OverviewActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.about:
+
+                Toast.makeText(this, "item2", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.settings:
+
+                Toast.makeText(this, "item2", Toast.LENGTH_SHORT).show();
+                break;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+        return true;
     }
 }

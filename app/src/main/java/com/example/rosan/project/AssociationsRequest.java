@@ -1,6 +1,8 @@
 package com.example.rosan.project;
 
 import android.content.Context;
+import android.widget.Toast;
+
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -15,7 +17,7 @@ public class AssociationsRequest implements Response.Listener<JSONObject> , Resp
 
     public interface Callback {
         void gotAssociations(ArrayList<String> associations);
-        void gotError(String message);
+        void gotAssociationsError(String message);
     }
 
     public Context context;
@@ -27,13 +29,12 @@ public class AssociationsRequest implements Response.Listener<JSONObject> , Resp
     }
 
     public void getAssociations(Callback activity, String query) {
-        /* Retrieve associations from API, if zo: notify activity */
+
         RequestQueue queue = Volley.newRequestQueue((Context) activity);
 
-        //String url = context.getString(R.string.as_url_p1)+ query +context.getString(R.string.as_ulr_p2);
         String url = "https://api.wordassociations.net/associations/v1.0/json/search?apikey=b5787245-7478-4ff6-95ca-bb421177f353&text="+ query+"&lang=en";
-        JsonObjectRequest request = new JsonObjectRequest(url, null, this, this);
-        queue.add(request);
+        JsonObjectRequest request_assocations = new JsonObjectRequest(url, null, this, this);
+        queue.add(request_assocations);
 
         /* Notify activity when retrieval successful*/
         cb = activity;
@@ -41,6 +42,7 @@ public class AssociationsRequest implements Response.Listener<JSONObject> , Resp
 
     @Override
     public void onResponse(JSONObject response) {
+
         try {
             JSONArray as_res = response.getJSONArray("response");
             JSONObject itemsObject = as_res.getJSONObject(0);
@@ -56,7 +58,7 @@ public class AssociationsRequest implements Response.Listener<JSONObject> , Resp
             }
 
             if(associations.isEmpty()){
-                cb.gotError("failed to extract associations");
+                cb.gotAssociationsError("failed to extract associations");
             } else {
                 cb.gotAssociations(associations);
             }
@@ -67,6 +69,6 @@ public class AssociationsRequest implements Response.Listener<JSONObject> , Resp
 
     @Override
     public void onErrorResponse(VolleyError error) {
-        cb.gotError("failed to extract associations");
+        cb.gotAssociationsError("failed to extract associations");
     }
 }

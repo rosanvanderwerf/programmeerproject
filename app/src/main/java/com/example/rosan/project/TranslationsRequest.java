@@ -101,7 +101,9 @@ public class TranslationsRequest implements Response.Listener<JSONObject>, Respo
                 if(!lst_translations.isEmpty()){
                     cb.gotTranslations(lst_translations);
                 } else {
+
                     cb.gotError("failed to extract translations");
+                    Toast.makeText(context, "failed translations", Toast.LENGTH_SHORT).show();
                 }
 
             }

@@ -8,6 +8,7 @@ import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -17,7 +18,7 @@ import java.io.PrintStream;
 import java.util.ArrayList;
 
 /* TO DO
-*  AsyncSearch for suggest possible words
+*  Default language is Dutch, updateUI accordingly
 *
 * */
 
@@ -54,7 +55,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         de.setOnClickListener(this);
         it.setOnClickListener(this);
 
-
+        lv_translations.setOnItemClickListener(new displayWord());
     }
 
     @Override
@@ -62,7 +63,6 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
 
         // When button is clicked
         switch (v.getId()) {
-
             case R.id.btn_nl:
                 // Function: all button background colors white
                 //language_nl = "nl";
@@ -130,9 +130,6 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
 
                 if(!query.isEmpty()){
 
-                    // empty listview
-                    //lv_translations.setAdapter(null);
-
                     TranslationsRequest tr_request = new TranslationsRequest(this);
                     tr_request.getTranslations(this, "nl", query);
                 } else {
@@ -146,7 +143,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void gotTranslations(ArrayList<String> translations) {
-        Toast.makeText(this, translations.toString(), Toast.LENGTH_LONG).show();
+        //Toast.makeText(this, translations.toString(), Toast.LENGTH_LONG).show();
 
         ArrayAdapter<String> adapter = new ArrayAdapter<>(
                 this, android.R.layout.simple_list_item_1, translations);
@@ -157,5 +154,23 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void gotError(String message) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+    }
+
+    private class displayWord implements android.widget.AdapterView.OnItemClickListener {
+        @Override
+        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+            // Extract selected word as String
+            String selectedQuery = (lv_translations.getItemAtPosition(position)).toString();
+
+            // Go to ResultActivity; with selected query as extra
+            Intent intent = new Intent(HomeActivity.this, ResultActivity.class);
+            intent.putExtra("query",selectedQuery);
+
+            // empty ListView
+            lv_translations.setAdapter(null);
+
+            startActivity(intent);
+        }
     }
 }
