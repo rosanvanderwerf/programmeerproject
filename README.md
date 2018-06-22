@@ -7,7 +7,7 @@ Short summary: Problem statement, solution, visual sketch, list of main features
 This application helps users to enrich their vocabulary. There are people that have difficulty communicating in English. This could be because English isn't their first language. The application can be used by people that want to learn and understand the English language by means of a translation and dictionary-like concept and a network visualization. 
 
 ## Solution
-With the application the user can find definitions, synonyms, antonyms and associations to substantiate and supplement the meaning of a searched word. The associations related to the searched word can be displayed to create a fuller picture. Furthermore, a list can be made to create frequent or interesting words for easy access.
+With the application the user can translate inputted word in Dutch, German, French and Italian to English. For the English words the user can find definitions, synonyms, antonyms and associations to substantiate and supplement the meaning of a searched word. The associations related to the searched word can be displayed to create a fuller picture. Furthermore, a list can be made to create frequent or interesting words for easy access.
 
 ### visual sketch
 1. Homescreen
