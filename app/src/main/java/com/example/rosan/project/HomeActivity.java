@@ -3,7 +3,6 @@ package com.example.rosan.project;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -14,11 +13,14 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
-import java.io.PrintStream;
+
 import java.util.ArrayList;
 
 /* TO DO
 *  Default language is Dutch, updateUI accordingly
+*
+*  FireBase connectie?
+*  Inloggen
 *
 * */
 
@@ -30,7 +32,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
     Button de;
     Button it;
 
-    WordRequest de_request;
+    WordObjectRequest de_request;
 
     private ListView lv_translations;
 
@@ -40,6 +42,10 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_home);
 
         // The default language is dutch
+
+        // Random: https://api.wordnik.com/v4/words.json/randomWord?hasDictionaryDef=true&maxCorpusCount=-1&minDictionaryCount=1&maxDictionaryCount=-1&minLength=5&maxLength=-1&api_key=YOURAPIKEY
+        // WotD:   https://api.wordnik.com/v4/words.json/wordOfTheDay?date=2018-06-22&api_key=YOURAPIKEY
+
 
         // Initiate Buttons and other views
         nl = findViewById(R.id.btn_nl);
@@ -56,6 +62,8 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         it.setOnClickListener(this);
 
         lv_translations.setOnItemClickListener(new displayWord());
+
+        // Requests for random word/word of the day
     }
 
     @Override

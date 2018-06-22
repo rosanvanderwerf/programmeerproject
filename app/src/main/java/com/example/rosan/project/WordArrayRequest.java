@@ -13,7 +13,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import java.util.ArrayList;
 
-public class AssociationsRequest implements Response.Listener<JSONObject> , Response.ErrorListener{
+public class WordArrayRequest implements Response.Listener<JSONObject> , Response.ErrorListener{
 
     public interface Callback {
         void gotAssociations(ArrayList<String> associations);
@@ -24,17 +24,17 @@ public class AssociationsRequest implements Response.Listener<JSONObject> , Resp
     public Callback cb;
 
     /* Constructor */
-    AssociationsRequest(Context c){
+    WordArrayRequest(Context c){
         context = c;
     }
 
-    public void getAssociations(Callback activity, String query) {
+    public void getDetails(Callback activity, String url, String query) {
 
         RequestQueue queue = Volley.newRequestQueue((Context) activity);
 
-        String url = "https://api.wordassociations.net/associations/v1.0/json/search?apikey=b5787245-7478-4ff6-95ca-bb421177f353&text="+ query+"&lang=en";
-        JsonObjectRequest request_assocations = new JsonObjectRequest(url, null, this, this);
-        queue.add(request_assocations);
+        //String url = "https://api.wordassociations.net/associations/v1.0/json/search?apikey=b5787245-7478-4ff6-95ca-bb421177f353&text="+ query+"&lang=en";
+        JsonObjectRequest request_associations = new JsonObjectRequest(url, null, this, this);
+        queue.add(request_associations);
 
         /* Notify activity when retrieval successful*/
         cb = activity;
@@ -43,6 +43,7 @@ public class AssociationsRequest implements Response.Listener<JSONObject> , Resp
     @Override
     public void onResponse(JSONObject response) {
 
+        // EXTRACT: associations
         try {
             JSONArray as_res = response.getJSONArray("response");
             JSONObject itemsObject = as_res.getJSONObject(0);
@@ -65,6 +66,8 @@ public class AssociationsRequest implements Response.Listener<JSONObject> , Resp
         } catch (JSONException e) {
             e.printStackTrace();
         }
+
+        // EXTRACT: examples
     }
 
     @Override
